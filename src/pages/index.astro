@@ -1,23 +1,23 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
 // Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 // Component Imports
-import CallToAction from '../components/CallToAction.astro';
-import Grid from '../components/Grid.astro';
-import Hero from '../components/Hero.astro';
-import Icon from '../components/Icon.astro';
-import Pill from '../components/Pill.astro';
-import PortfolioPreview from '../components/PortfolioPreview.astro';
+import CallToAction from "../components/CallToAction.astro";
+import Grid from "../components/Grid.astro";
+import Hero from "../components/Hero.astro";
+import Icon from "../components/Icon.astro";
+import Pill from "../components/Pill.astro";
+import PortfolioPreview from "../components/PortfolioPreview.astro";
 
 // Page section components
-import ContactCTA from '../components/ContactCTA.astro';
-import Skills from '../components/Skills.astro';
+import ContactCTA from "../components/ContactCTA.astro";
+import Skills from "../components/Skills.astro";
 
 // Content Fetching: List four most recent work  projects
-const projects = (await getCollection('blog'))
+const projects = (await getCollection("blog"))
 	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
 	.slice(0, 4);
 
@@ -36,7 +36,9 @@ const projects = (await getCollection('blog'))
 				>
 					<div class="roles">
 						<Pill><Icon icon="flask" size="1.33em" /> Computer Scientist</Pill>
-						<Pill><Icon icon="circuitry" size="1.33em" /> Computer Engineer</Pill>
+						<Pill>
+							<Icon icon="circuitry" size="1.33em" /> Computer Engineer
+						</Pill>
 						<Pill><Icon icon="code" size="1.33em" /> Developer</Pill>
 					</div>
 				</Hero>
@@ -62,7 +64,7 @@ const projects = (await getCollection('blog'))
 				<div class="gallery">
 					<Grid variant="offset">
 						{
-							projects.map((project) => (
+							projects.map(project => (
 								<li>
 									<PortfolioPreview project={project} />
 								</li>
@@ -83,17 +85,34 @@ const projects = (await getCollection('blog'))
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Mentions</h3>
 					<p>
-						I have been fortunate enough to recieve praise for my work in several publications. Take
-						a look below to learn more.
+						I have been fortunate enough to recieve praise for my work in
+						several awards.
 					</p>
 				</header>
 
 				<div class="gallery">
 					<Grid variant="small">
 						{
-							['Sparkling Star Award (2022)', 'Sparkling Star Award (2023)', 'Excellent Project Operation Award'].map((brand) => (
-								<li class="mention-card">
-									<p>{brand}</p>
+							[
+								{
+									title: "Sparkling Star Award (2022)",
+									background: "/assets/sparkling-front.jpg"
+								},
+								{
+									title: "Sparkling Star Award (2023)",
+									background: "/assets/sparkling-front.jpg"
+								},
+								{
+									title: "Excellent Project Operation Award (2023)\
+									(to the team)",
+									background: "/assets/excellent-project.jpg"
+								}
+							].map(({ title, background }) => (
+								<li
+									class="mention-card"
+									style={{ "background-image": `url(${background})` }}
+								>
+									<p>{title}</p>
 								</li>
 							))
 						}
@@ -162,7 +181,7 @@ const projects = (await getCollection('blog'))
 	.with-background::before {
 		--hero-bg: var(--bg-image-subtle-2);
 
-		content: '';
+		content: "";
 		position: absolute;
 		pointer-events: none;
 		left: 50%;
@@ -170,8 +189,9 @@ const projects = (await getCollection('blog'))
 		aspect-ratio: calc(2.25 / var(--bg-scale));
 		top: 0;
 		transform: translateY(-75%) translateX(-50%);
-		background: url('/assets/backgrounds/noise.png') top center/220px repeat,
-			var(--hero-bg) center center / var(--bg-gradient-size) no-repeat, var(--gray-999);
+		background: url("/assets/backgrounds/noise.png") top center/220px repeat,
+			var(--hero-bg) center center / var(--bg-gradient-size) no-repeat,
+			var(--gray-999);
 		background-blend-mode: overlay, normal, normal, normal;
 		mix-blend-mode: var(--bg-blend-mode);
 		z-index: -1;
@@ -196,12 +216,12 @@ const projects = (await getCollection('blog'))
 	@media (min-width: 50em) {
 		.section {
 			grid-template-columns: repeat(4, 1fr);
-			grid-template-areas: 'header header header header' 'gallery gallery gallery gallery';
+			grid-template-areas: "header header header header" "gallery gallery gallery gallery";
 			gap: 5rem;
 		}
 
 		.section.with-cta {
-			grid-template-areas: 'header header header cta' 'gallery gallery gallery gallery';
+			grid-template-areas: "header header header cta" "gallery gallery gallery gallery";
 		}
 
 		.section-header {
@@ -237,9 +257,15 @@ const projects = (await getCollection('blog'))
 		text-align: center;
 		border: 1px solid var(--gray-800);
 		border-radius: 1.5rem;
-		color: var(--gray-300);
+		color: black;
+		font-weight: bold;
 		background: var(--gradient-subtle);
 		box-shadow: var(--shadow-sm);
+		background-size: 100% 100%;
+	}
+
+	.mention-card > p {
+		background-color: var(--gray-300);
 	}
 
 	@media (min-width: 50em) {

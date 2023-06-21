@@ -13,3 +13,4 @@ insert_final_newline = false
 
 [*.astro]
 indent_size = 2
+indent_style = tab
