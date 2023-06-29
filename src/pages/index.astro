@@ -103,7 +103,8 @@ const projects = (await getCollection("blog"))
 									background: "/assets/sparkling-front.jpg"
 								},
 								{
-									title: "Excellent Project Operation Award (2023)\
+									title:
+										"Excellent Project Operation Award (2023)\
 									(to the team)",
 									background: "/assets/excellent-project.jpg"
 								}
@@ -112,7 +113,7 @@ const projects = (await getCollection("blog"))
 									class="mention-card"
 									style={{ "background-image": `url(${background})` }}
 								>
-									<p>{title}</p>
+									<span>{title}</span>
 								</li>
 							))
 						}
@@ -253,7 +254,7 @@ const projects = (await getCollection("blog"))
 		display: flex;
 		height: 7rem;
 		justify-content: center;
-		align-items: center;
+		align-items: baseline;
 		text-align: center;
 		border: 1px solid var(--gray-800);
 		border-radius: 1.5rem;
@@ -262,10 +263,15 @@ const projects = (await getCollection("blog"))
 		background: var(--gradient-subtle);
 		box-shadow: var(--shadow-sm);
 		background-size: 100% 100%;
+		font-size: smaller;
 	}
 
-	.mention-card > p {
-		background-color: var(--gray-300);
+	.mention-card > span {
+		color: white;
+		margin: 0.2rem;
+		background-color: rgba(0, 0, 0, 60);
+		border-radius: 0.45rem;
+		padding: 0.2rem 0.3rem;
 	}
 
 	@media (min-width: 50em) {
