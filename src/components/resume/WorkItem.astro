@@ -1,0 +1,40 @@
+---
+interface Props {
+	title: string;
+	description: string;
+	image?: string;
+}
+
+const { title, description, image } = Astro.props;
+---
+
+<div class="work-item">
+	<div style="margin-top: auto; margin-bottom: auto;">
+		<h5>{title}</h5>
+		<p class="work-desc">{description}</p>
+		<slot />
+	</div>
+	{!!image && <img class="work-logo" src={image} alt="" />}
+</div>
+
+<style>
+	.work-item {
+		margin: 0.7rem auto;
+		display: grid;
+		grid-template-columns: 3fr 1fr;
+	}
+
+	.work-item > h5 {
+		font-size: larger;
+	}
+
+	.work-desc {
+		font-style: oblique;
+		text-decoration-line: underline;
+	}
+
+	.work-logo {
+		width: 5em;
+		margin-left: auto;
+	}
+</style>
