@@ -1,0 +1,141 @@
+---
+import Grid from "../../components/Grid.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/resume/Section.astro";
+import WorkItem from "../../components/resume/WorkItem.astro";
+---
+
+<BaseLayout title="Resume" description="resume">
+	<div id="resume" class="stack wrapper" style="text-align: center;">
+		<Grid>
+			<div id="header" class="stack">
+				<h3>Muaz KARATAŞ</h3>
+				<ul id="contact-info">
+					<li><span>Nationality:</span>Turkey</li>
+					<li><span>Date of Birth:</span>1998</li>
+					<li><span>Gender:</span>Male</li>
+					<li><span>E-Mail:</span>user12043@hotmail.com</li>
+				</ul>
+			</div>
+
+			<img alt="Muaz looking with confidence in a green environment" width="250" src="/assets/portrait.jpg" id="portrait" />
+		</Grid>
+		<Grid>
+			<div>
+				<Section title="SKILLS">JAVA SPRING REST</Section>
+				<Section title="EDUCATION">
+					<WorkItem
+						title="Computer Science (Bachelor)"
+						description="Sakarya University, Sakarya, Turkey [2016 - 2020]"
+						image="/assets/sau-logo.png"
+					>
+						<code style="font-style: oblique">
+							<a href="https://ebs.sakarya.edu.tr/Birim/DersPlan/255?culture=en-US" target="_blank">
+								https://ebs.sakarya.edu.tr/Birim/DersPlan/255?culture=en-US</a
+							>
+						</code>
+					</WorkItem>
+				</Section>
+			</div>
+			<div>
+				<Section title="WORK EXPERIENCE">
+					<WorkItem
+						title="Software Engineer"
+						description="Huawei / HTRDC Office / Full Remote, Turkey [2022 - now]"
+						image="/assets/huawei-logo.svg"
+					>
+						<ul>
+							<li>
+								Maintaining and <strong>developing new features</strong> in App Gallery Search team
+							</li>
+							<li>
+								Reviewing and presenting <strong>new solutions</strong> for technical architecture
+							</li>
+							<li>
+								<strong>Troubleshooting</strong> problems and implementing solutions after <strong>technical discussions</strong> with
+								China HQ team
+							</li>
+							<li>
+								Improving <strong>overall development lifecycle</strong> by <strong>designing</strong> new development and test environments
+							</li>
+						</ul>
+					</WorkItem>
+					<WorkItem
+						title="System Consultant & Project Manager"
+						description="Toyota Motor Europe, Adapazarı Branch, Sakarya, Turkey [2020 - 2022]"
+						image="/assets/toyota-logo.svg"
+					>
+						<ul>
+							<li>
+								Managed the <strong>whole lifecycle</strong> of projects from client to production whilst <strong
+									>retaining the developer</strong
+								> role
+							</li>
+							<li>
+								Ensured the <strong>high availability</strong> of products across
+								<strong>all Toyota Europe plants</strong> by working closely with other IT teams
+							</li>
+							<li>Maintained quality by analyzing the client requirements from all related countries</li>
+						</ul>
+					</WorkItem>
+					<WorkItem
+						title="Full Stack Developer (Contractor)"
+						description="Toyota Motor Europe, Adapazarı Branch, Sakarya, Turkey [2019 - 2020]"
+						image="/assets/toyota-logo.svg"
+					>
+						<ul>
+							<li>
+								Took <strong>full responsibility</strong> for several projects
+							</li>
+							<li>
+								Brought <strong>ideas to production</strong> to increase productivity and maintainability
+							</li>
+							<li>
+								Discussed <strong>technical decisions</strong> with other IT teams at necessary points on projects
+							</li>
+							<li>Worked 4-days in a week</li>
+						</ul>
+					</WorkItem>
+					<WorkItem
+						title="Full Stack Developer (Contractor)"
+						description="Toyota Motor Europe, Adapazarı Branch, Sakarya, Turkey [2019 - 2020]"
+						image="/assets/toyota-logo.svg"
+					/>
+				</Section>
+			</div>
+		</Grid>
+	</div>
+</BaseLayout>
+
+<style>
+	ul.grid {
+		justify-content: space-around;
+	}
+
+	#portrait {
+		margin-left: auto;
+		border-radius: 2.3rem;
+	}
+
+	#header {
+		text-align: left;
+		/* margin-left: 15%; */
+		margin-right: 15%;
+		justify-content: space-around;
+	}
+
+	#contact-info {
+		list-style: none;
+		padding: 0;
+		margin-top: 0.4em;
+	}
+
+	#contact-info > li {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	#contact-info > li > span {
+		font-weight: bold;
+	}
+</style>
